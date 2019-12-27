@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <%if(msg) { %>
+    	<p><%=msg %></p>
+    <%} %>
+    <div id="chatList">
+    	<%for (var i = 0; i < rows.length; i++) { %>
+    	<div class='chat'>
+    		방 이름 : <span class="roomNm"><%=rows[i].CHAT_NM %></span></br>
+    		<span class="pCnt">현재 인원 수 : <%=rows[i].PERSON_CNT %></span>
+    	</div>
+    	<%} %>
+    </div>
+    <button onclick="enterChat();">채팅방 생성</button>
+  </body>
+  
+  <script> 
+  	function enterChat() {
+  		var roomName = prompt('채팅방이름을 입력하세요', '');
+  		
+  		$.each($(".roomNm"), function(i, v) {
+  			if($(v).text() == roomName) {
+  				alert('중복된 이름입니다.');
+  				return;
+  			}
+  		});
+  		
+  		if(roomName == null || roomName == undefined) return;
+  		window.location.assign('/chatting/create/' + roomName);
+  	}
+  	
+  	$(function() {
+  		$(".chat").on('click', function(e) {
+  			var roomName = $(this).children('span.roomNm').text();
+  			window.location.assign('/chatting/enter/' + roomName);
+  		});
+  	})
+  </script>
+</html>

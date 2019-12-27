@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.chat {
+	border: 1px solid yellowgreen;
+	padding: 10px;
+	margin: 10px;
+	width: 10%;
+	text-align: center;
+}
+.chat:hover {
+	cursor: pointer;
+	width: 11%;
+}
+#main {
+	border: 1px solid black;
+	width: 30%;
+	height: 300px;
+		
+}
